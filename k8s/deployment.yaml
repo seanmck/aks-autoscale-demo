@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvcapp
+  namespace: mvc
+spec:
+  selector:
+    matchLabels:
+      app: mvcapp
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mvcapp
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: agentpool
+                operator: In
+                values:
+                - mainnp
+      containers:
+      - name: mvcapp
+        image: seanmckdemo.azurecr.io/mvc-hpa
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - name: http
+          containerPort: 80
