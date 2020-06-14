@@ -14,8 +14,8 @@ namespace mvc_hpa
     {
         public static void Main(string[] args)
         {
-            var server = new MetricServer(hostname: "localhost", port: 9000);
-            server.Start();
+            var server = new MetricServer(port: 9000);
+            server.Start();            
 
             CreateHostBuilder(args).Build().Run();
         }

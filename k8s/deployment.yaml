@@ -25,7 +25,7 @@ spec:
                 - mainnp
       containers:
       - name: mvcapp
-        image: seanmckdemo.azurecr.io/mvc-hpa
+        image: seanmckdemo.azurecr.io/mvc-hpa:0.3
         resources:
           requests:
             memory: "512Mi"
@@ -36,3 +36,5 @@ spec:
         ports:
         - name: http
           containerPort: 80
+        - name: metrics
+          containerPort: 9000
