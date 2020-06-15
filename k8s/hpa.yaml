@@ -9,7 +9,7 @@ spec:
     kind: Deployment
     name: mvcapp
   minReplicas: 1
-  maxReplicas: 50
+  maxReplicas: 100
   metrics:
   - type: Pods
     pods:
@@ -17,4 +17,4 @@ spec:
         name: requests_per_second
       target:
         type: AverageValue
-        averageValue: "40"
+        averageValue: "25"
